@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.5.0
+## v0.2.0
 
 - 화면 퍼블리싱
 - 컴포넌트(Dropzone, Footer, Loading, Maybe) 설계 및 개발
