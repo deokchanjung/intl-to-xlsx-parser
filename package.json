@@ -2,6 +2,13 @@
   "name": "intl-to-xlsx-parser",
   "version": "0.1.0",
   "private": true,
+  "description": "json to xlsx file parser for intl message.",
+  "homepage": "https://github.com/deokchanjung/intl-to-xlsx-parser",
+  "bugs": {
+    "url": "https://github.com/deokchanjung/intl-to-xlsx-parser/issues",
+    "email": "develoduck@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
