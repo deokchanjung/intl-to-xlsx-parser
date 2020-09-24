@@ -5,12 +5,13 @@ import Utils from '../utils';
 
 const styles = {
   container: {
-    textAlign: 'center' as 'center',
-  },
+    textAlign: 'center' as 'center'
+  }
 };
 
 const AttachForm = (): JSX.Element => {
   const [isShowLoading, toggleLoading] = useState(false);
+  const [canDownload, toggleCanDownload] = useState(false);
 
   const onDropFile = (file: any): void => {
     let reader = new FileReader();
@@ -25,15 +26,22 @@ const AttachForm = (): JSX.Element => {
 
   return (
     <div style={styles.container}>
-      <Typography variant='h2'>JSON to XLSX Parser</Typography>
-      <Typography variant='h6'>
+      <Typography variant="h2">JSON to XLSX Parser</Typography>
+      <Typography variant="h6">
         json 파일을 첨부하시면 xlsx 파일로 자동으로 변환됩니다. <br />
         변환이 완료되면 아래 다운로드 버튼을 통해 다운로드 하실 수 있습니다.
       </Typography>
 
       <Dropzone onDropFile={onDropFile} />
 
-      <Button type='submit' color='primary' variant='contained' size='large' onClick={onDownload}>
+      <Button
+        type="submit"
+        color="primary"
+        variant="contained"
+        size="large"
+        onClick={onDownload}
+        disabled={!canDownload}
+      >
         다운로드
       </Button>
 

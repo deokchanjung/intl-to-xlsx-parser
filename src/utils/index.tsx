@@ -11,16 +11,39 @@ const readJSON = (event: ProgressEvent<FileReader>): object => {
 
   try {
     if (!rawJSON) {
-      throw new Error('파일 내용이 없는 json 파일입니다. \n내용 확인후 다시 첨부해주세요.');
+      throw new Error(
+        '파일 내용이 없는 json 파일입니다. \n내용 확인후 다시 첨부해주세요.'
+      );
     }
     const json = rawJSON ? JSON.parse(rawJSON as string) : null;
     console.log(json);
     return json;
   } catch (error) {
-    throw new Error('json 형식이 잘못되었습니다. \njson 형식이 맞는지 확인후 다시 첨부해주세요.');
+    throw new Error(
+      '파일 형식이 잘못되었습니다. \njson 파일이 맞는지 확인후 다시 첨부해주세요.'
+    );
   }
+};
+
+const getDepth = (json: object): number => {
+  let depth: number = 0;
+
+  const explorer = (target: object): void => {
+    depth++;
+
+    Object.keys(target).forEach((key: string): void => {
+      if (typeof key === 'string') {
+        return;
+      }
+      explorer(target[key]);
+    });
+  };
+
+  explorer(json);
+  return depth;
 };
 
 export default {
   readJSON,
+  getDepth
 };
